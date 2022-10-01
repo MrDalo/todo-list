@@ -1,8 +1,7 @@
 import React from 'react';
 import { useFormik, FormikHelpers } from 'formik';
-import { addListSchema } from '../formikSchemas/addListFormSchema';
-import { StyledInput } from './styles/NewListFormStyles';
-import { TextField, Button } from '@mui/material';
+import { addListSchema } from '../../formikSchemas/addListFormSchema';
+import { StyledTextField, StyledButton, StyledForm } from './styles/NewListFormStyles';
 
 const NewListForm = () => {
 
@@ -23,8 +22,8 @@ const NewListForm = () => {
 
 
   return (
-    <form onSubmit={formik.handleSubmit} autoComplete="off">
-        <TextField 
+    <StyledForm onSubmit={formik.handleSubmit} autoComplete="off">
+        <StyledTextField 
             id="listName" 
             label="List Name" 
             helperText="Please enter new list name"
@@ -33,10 +32,9 @@ const NewListForm = () => {
             value={formik.values.listName}
             onChange={formik.handleChange}
             className={formik.errors.listName && formik.touched.listName ? "input-error" : ""}
-
         />
-        <Button variant="contained" type="submit">Add new List</Button>
-    </form>
+        <StyledButton variant="contained" type="submit">Add new List</StyledButton>
+    </StyledForm>
   );
 }
 

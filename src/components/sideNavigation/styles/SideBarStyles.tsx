@@ -1,13 +1,22 @@
 import { styled } from "@mui/material/styles";
-import { AppBar, Typography, Box, Toolbar } from "@mui/material";
+import { AppBar, Typography, Box, Toolbar, IconButton } from "@mui/material";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
+export const StyledIconButton = styled(IconButton)`
+  position: absolute;
+  right: 15px;
+  top: 15px;
+
+  color: white;
+  font-size: 40px;
+  z-index: 3;
+`;
 
 export const StyledToolbar = styled(Toolbar)`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  padding-top: 60px;
+  padding-top: 80px;
 `
 
 export const StyledBox = styled(Box)`
@@ -33,12 +42,14 @@ export const StyledBox = styled(Box)`
 
 export const StyledTitle = styled(Typography)`
   width: 100%;
-  margin-bottom: 15vh;
+  margin-bottom: 8vh;
 `;
 
 export const StyledAppBar = styled(AppBar)`
+  position: relative;
   width: 100%;
   height: 100%;
+
   border-top-right-radius: 40px;
   border-bottom-right-radius: 40px;
 `;
