@@ -1,8 +1,8 @@
 import React from "react";
 import {Box, IconButton} from "@mui/material";
-import ToDoList from "./ToDoList";
-import { StyledAddCircleOutlineIcon, StyledAppBar, StyledBox, StyledTitle, StyledToolbar } from "./styles/SideBarStyles";
-
+import ToDoListNav from "./ToDoListNav";
+import { StyledAddCircleOutlineIcon, StyledAppBar, StyledBox, StyledTitle, StyledToolbar} from "./styles/SideBarStyles";
+import NewListForm from "./NewListForm";
 
 const SideBar = () => {
   return (
@@ -22,11 +22,13 @@ const SideBar = () => {
               ToDo App
             </StyledTitle>
             <StyledBox>
-                <ToDoList/>
+                <ToDoListNav/>
             </StyledBox>
             <IconButton>
                 <StyledAddCircleOutlineIcon />
             </IconButton>
+            
+            <NewListForm />
 
         </StyledToolbar>
       </StyledAppBar>

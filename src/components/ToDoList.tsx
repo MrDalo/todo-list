@@ -1,19 +1,8 @@
-import { List } from '@mui/material';
-import React from 'react';
-import { StyledList } from './styles/ToDoListStyles';
-import ToDoListItem from './ToDoListItem';
-
-
+import React from 'react'
 
 const ToDoList = () => {
   return (
-    <StyledList>
-        <ToDoListItem/>
-        <ToDoListItem/>
-        <ToDoListItem/>
-        <ToDoListItem/>
-
-    </StyledList>
+    <div>ToDoList</div>
   );
 }
 
