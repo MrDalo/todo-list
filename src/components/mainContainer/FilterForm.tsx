@@ -29,18 +29,18 @@ const FilterForm = () => {
             }}
         >
 
-        <StyledFormControl className='form-checkbox'>
-            <StyledRadioGroup
-                row
-                defaultValue="All"
-                name="radio-buttons-group"
-                onChange={handleRadioChange}
-            >
-                <FormControlLabel value="All" control={<Radio />} label="All" />
-                <FormControlLabel value="Active" control={<Radio />} label="Active" />
-                <FormControlLabel value="Finished" control={<Radio />} label="Finished" />
-            </StyledRadioGroup>
-        </StyledFormControl>
+            <StyledFormControl className='form-checkbox'>
+                <StyledRadioGroup
+                    row
+                    defaultValue="All"
+                    name="radio-buttons-group"
+                    onChange={handleRadioChange}
+                >
+                    <FormControlLabel value="All" control={<Radio />} label="All" />
+                    <FormControlLabel value="Active" control={<Radio />} label="Active" />
+                    <FormControlLabel value="Finished" control={<Radio />} label="Finished" />
+                </StyledRadioGroup>
+            </StyledFormControl>
             
         </Box>
 

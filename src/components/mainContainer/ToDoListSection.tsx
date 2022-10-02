@@ -1,15 +1,31 @@
 import React from 'react';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import ToDoList from './ToDoList';
+import { StyledIconButton } from './styles/ToDoListSectionStyles';
+import AddItemForm from './AddItemForm';
 
 const ToDoListSection = () => {
+  const handleAddToDoItemClick = () =>{
+    const iconButton = document.getElementById('add-circle-icon-button');
+    const addTaskForm = document.getElementById('add-item-form');
+
+    iconButton?.classList.toggle('active-button');
+    addTaskForm?.classList.toggle('hidden-toggle');
+
+
+  }
+  
+  
   return (
     <>
 
-        <ToDoList />
-    
-        <AddCircleOutlineIcon />
+      <ToDoList />
+      
+      <StyledIconButton id="add-circle-icon-button" onClick={handleAddToDoItemClick}>
+        <AddCircleOutlineIcon sx={{fontSize: '36px', zIndex: 4}}/>
+      </StyledIconButton>
 
+      <AddItemForm />
 
     </>
     

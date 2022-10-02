@@ -1,5 +1,4 @@
-import { styled } from "@mui/material/styles";
-
+import { styled } from '@mui/material/styles';
 import { Container } from '@mui/material';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 
@@ -7,7 +6,7 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 export const StyledContainer = styled(Container)`
     position: relative;
     width: 100%;
-    height: 100vh;
+    // height: 100vh;
     display: flex;
     justify-content: flex-start;
     align-items: center;

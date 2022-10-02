@@ -1,7 +1,7 @@
-import { styled } from "@mui/material/styles";
-import { TextField, IconButton, InputBase } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { IconButton, InputBase } from '@mui/material';
 
-export const StyledFrom = styled('form')`
+export const StyledForm = styled('form')`
     position: relative;
     width: 60%;
     height: 38px;

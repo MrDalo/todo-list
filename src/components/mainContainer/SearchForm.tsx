@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFormik, FormikHelpers } from 'formik';
 import SearchIcon from '@mui/icons-material/Search';
-import { StyledFrom, StyledIconButton, StyledInputBase } from './styles/SearchFormStyles';
+import { StyledForm, StyledIconButton, StyledInputBase } from './styles/SearchFormStyles';
 
 
 const SearchForm = () => {
@@ -22,19 +22,18 @@ const SearchForm = () => {
 
 
     return (
-        <StyledFrom onSubmit={formik.handleSubmit} autoComplete='off'>
+        <StyledForm onSubmit={formik.handleSubmit} autoComplete='off'>
             <StyledInputBase
                 id='searchingItem'
                 type='text'
                 placeholder="Search task in list"
-                inputProps={{ 'aria-label': 'Search task in list' }}
                 value={formik.values.searchingItem}
                 onChange={formik.handleChange}
             />
             <StyledIconButton type="submit" aria-label="search">
               <SearchIcon />
             </StyledIconButton>
-        </StyledFrom>
+        </StyledForm>
     );
 }
 

@@ -1,10 +1,19 @@
-import { styled } from "@mui/material/styles";
-import { TextField, Button } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Button, InputBase } from '@mui/material';
 
-export const StyledTextField = styled(TextField)`
+export const StyledInputBase = styled(InputBase)`
   font-size: 16px;
-  border-radius: 10px;
+  padding: 2px 10px;
+  border-radius: 20px;
+  background-color: white; 
   width: 100%;
+  
+  border: 2px solid #fff;
+
+    &.input-error{
+      border: 2px solid #FF5959;        
+    }
+
 `;
 
 export const StyledButton = styled(Button)`

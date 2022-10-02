@@ -1,11 +1,11 @@
-import { styled } from "@mui/material/styles";
+import { styled } from '@mui/material/styles';
 import {Box} from "@mui/material";
 
 export const StyledBox = styled(Box)`
-    width: 80%;
+    width: 95%;
     max-height: 45vh;
-    margin-bottom: 20px;
-    margin-top: 40px;
+    margin-bottom: 10px;
+    margin-top: 20px;
 
     overflow-y: scroll;
     
