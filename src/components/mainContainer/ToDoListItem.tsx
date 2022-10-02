@@ -28,11 +28,11 @@ const ToDoListItem = () => {
           <Typography
             variant='h5'
             padding={'5px 0'}
-            overflow={'scroll'}
+            overflow={'auto'}
           >
             Task name
           </Typography>
-          <Typography overflow={'scroll'}>
+          <Typography overflow={'auto'}>
             Task asdfasdfa assdfsdfasdfasdfasdf dfasdfasdfasdf dfasdfasdfasdfdfa sdfasdfasdf fasdfasdfasdf
           </Typography>
           <Typography

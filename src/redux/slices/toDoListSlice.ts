@@ -1,7 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
+import {v4 as uuidv4} from 'uuid';
 
 interface IToDoList{
-    id: number,
+    id: string,
     name: string
 }
 
@@ -14,7 +15,7 @@ const toDoListSlice = createSlice({
     reducers: {
         addNewList: (state, action) =>{
             const newToDoList = {
-                id: Date.now(),
+                id: uuidv4(),
                 name: action.payload.name
             }
 
