@@ -1,15 +1,10 @@
 import { styled } from "@mui/material/styles";
-import {IconButton, Box, FormGroup} from '@mui/material';
+import {IconButton, Box, FormControl, RadioGroup} from '@mui/material';
 
 
-export const StyledFormGroup = styled(FormGroup)`
+export const StyledFormControl = styled(FormControl)`
     position: relative;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    flex-wrap: wrap;
     width: 100%;
-    height: 40px;
     overFlow: hidden;
 
     transition-duration: 1.5s;
@@ -21,7 +16,14 @@ export const StyledFormGroup = styled(FormGroup)`
 
 `;
 
-
+export const StyledRadioGroup = styled(RadioGroup)`
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+`;
 
 
 export const StyledIconButton = styled(IconButton)`
@@ -45,9 +47,8 @@ export const StyledBox = styled(Box)`
     align-items: center;
     justify-content: space-between;
     overflow: hidden;
-    height: 40px;
+    // height: 40px;
 
 
     // background-color: #ddd;
-    border-radius: 30px;
 `;

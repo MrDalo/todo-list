@@ -1,7 +1,7 @@
 import React from 'react'
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
-import { StyledIconButton, StyledBox, StyledFormGroup } from './styles/FilterFormStyles';
-import { Box, Checkbox, FormControlLabel } from '@mui/material';
+import { StyledIconButton, StyledBox, StyledFormControl, StyledRadioGroup } from './styles/FilterFormStyles';
+import { Box, FormControlLabel, Radio} from '@mui/material';
 
 
 
@@ -17,19 +17,31 @@ const FilterForm = () => {
         })
     }
 
+    const handleRadioChange = () =>{
+        console.log("RADIO change");
+    }
+
   return (
     <StyledBox>
         <Box sx={{
             overflow: 'hidden',
             width: '80%',
-            borderRadius: '40px'
             }}
         >
-            <StyledFormGroup className='form-checkbox'>
-                <FormControlLabel control={<Checkbox />} label="All" />
-                <FormControlLabel control={<Checkbox />} label="Active" />
-                <FormControlLabel control={<Checkbox />} label="Finished" />
-            </StyledFormGroup>
+
+        <StyledFormControl className='form-checkbox'>
+            <StyledRadioGroup
+                row
+                defaultValue="All"
+                name="radio-buttons-group"
+                onChange={handleRadioChange}
+            >
+                <FormControlLabel value="All" control={<Radio />} label="All" />
+                <FormControlLabel value="Active" control={<Radio />} label="Active" />
+                <FormControlLabel value="Finished" control={<Radio />} label="Finished" />
+            </StyledRadioGroup>
+        </StyledFormControl>
+            
         </Box>
 
         <StyledIconButton id="filter-icon-button" onClick={handleClickOnIcon}>
