@@ -1,15 +1,18 @@
 import React from 'react'
 import { StyledLink, StyledListItem, StyledListItemButton, StyledListItemText } from './styles/ToDoListItemNavStyles';
 
-const ToDoListItemNav = () => {
-  const ID = Date.now();
+interface IProps{
+  id: string,
+  name: string
+}
 
+const ToDoListItemNav = ({id, name}: IProps) => {
   return (
     <StyledListItem>
-        <StyledLink to={`/${ID}`}>
+        <StyledLink to={`/${id}`}>
           <StyledListItemButton>
               <StyledListItemText>
-                Task list {ID}
+                {name}
               </StyledListItemText>
           </StyledListItemButton>
         </StyledLink>

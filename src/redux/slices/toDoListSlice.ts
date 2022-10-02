@@ -7,11 +7,33 @@ interface IToDoList{
 }
 
 const initialStateVar: IToDoList[] = [];
+const initialStateTestingData: IToDoList[] = [
+    {
+        id: uuidv4(),
+        name: "TaskList 1"
+    },
+    {
+        id: uuidv4(),
+        name: "TaskList 2"
+    },
+    {
+        id: uuidv4(),
+        name: "TaskList 3"
+    },
+    {
+        id: uuidv4(),
+        name: "TaskList 4"
+    },
+    {
+        id: uuidv4(),
+        name: "TaskList 5"
+    },
 
+];
 
 const toDoListSlice = createSlice({
     name: "toDoList",
-    initialState: initialStateVar,
+    initialState: initialStateTestingData,
     reducers: {
         addNewList: (state, action) =>{
             const newToDoList = {
@@ -21,10 +43,13 @@ const toDoListSlice = createSlice({
 
             state.push(newToDoList);
         },
-        deleteList: (state, action) =>{
+        readLists: (state, action)=>{
 
         },
-        editList: (state, action)=> {
+        updateList: (state, action)=> {
+
+        },
+        deleteList: (state, action) =>{
 
         }
 

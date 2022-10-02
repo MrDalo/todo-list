@@ -4,14 +4,30 @@ import { StyledListItem, StyledListItemIcon } from './styles/ToDoListItemStyles'
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import IconButton from '@mui/material/IconButton';
+import { useAppDispatch } from '../../redux/hooks';
+import { IToDoItem, toDoItemActions } from '../../redux/slices/toDoItemSlice';
 
 
-const ToDoListItem = () => {
+interface IProps extends IToDoItem{
+
+}
+
+const ToDoListItem = ({id, name, description, date, taskListId, checked}: IProps) => {
+
+  const dispatch = useAppDispatch();
+
+  const handleEditButtonAction = () =>{
+    dispatch(toDoItemActions.updateItem(id));
+
+
+  }
+  
+  const handleDeleteButtonAction = () =>{
+    dispatch(toDoItemActions.deleteItem(id));
+  }
 
   const handleCheckboxAction = () =>{
-    console.log("checked");
-    console.log();
-
+    dispatch(toDoItemActions.checkedItem(id));
   }
 
 
@@ -19,6 +35,7 @@ const ToDoListItem = () => {
     <StyledListItem>
         <Checkbox
           onChange={handleCheckboxAction}
+          checked={checked}
           sx={{ 
             '& .MuiSvgIcon-root': { fontSize: 35 },
             marginRight: '10px'
@@ -30,23 +47,23 @@ const ToDoListItem = () => {
             padding={'5px 0'}
             overflow={'auto'}
           >
-            Task name
+            {name}
           </Typography>
           <Typography overflow={'auto'}>
-            Task asdfasdfa assdfsdfasdfasdfasdf dfasdfasdfasdf dfasdfasdfasdfdfa sdfasdfasdf fasdfasdfasdf
+            {description}
           </Typography>
           <Typography
             variant='body2'
             padding={'5px 0'}
           >
-            12/5/2022 18:00
+            {date.toLocaleString()}
           </Typography>
         </ListItemText>
         <StyledListItemIcon>
-          <IconButton onClick={handleCheckboxAction}>
+          <IconButton onClick={handleEditButtonAction}>
             <ModeEditOutlineOutlinedIcon sx={{color: 'black'}}/>
           </IconButton>
-          <IconButton onClick={handleCheckboxAction}>
+          <IconButton onClick={handleDeleteButtonAction}>
             <DeleteOutlineOutlinedIcon sx={{color: 'black'}} />
           </IconButton>
         </StyledListItemIcon>

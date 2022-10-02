@@ -3,9 +3,19 @@ import { Button, Typography } from '@mui/material';
 import { useFormik, FormikHelpers } from 'formik';
 import { StyledForm, StyledBox, StyledButtonBox, StyledInputBase, StyledTaskNameInputBox } from './styles/AddItemFormStyles';
 import { addItemSchema } from '../../formikSchemas/addItemFormSchema';
+import { useAppDispatch } from '../../redux/hooks';
+import { IToDoItem, toDoItemActions } from '../../redux/slices/toDoItemSlice';
+import {v4 as uuidv4} from 'uuid';
+import { useParams } from 'react-router-dom';
 
 const AddItemForm = () => {
 
+  const dispatch = useAppDispatch();
+
+  const URLID = useParams().id;
+  
+  const idOfParent = URLID !== undefined ? URLID : "lostTaskWithNoParent";
+  
   const onSubmitFunction = ( 
     values:{
       taskName: string;
@@ -15,10 +25,19 @@ const AddItemForm = () => {
       taskName: string;
       taskDescription: string;
       taskDate: Date;
-    }>) =>{
-    console.log(values);
-    actions.resetForm();
-  }
+    }>) =>
+    {
+      dispatch(toDoItemActions.createNewItem({
+        id: uuidv4(),
+        name: values.taskName,
+        description: values.taskDescription,
+        date: new Date(values.taskDate).toLocaleString(),
+        taskListId: idOfParent,
+        checked: false
+      })); 
+
+      actions.resetForm();
+    }
 
   const formik = useFormik({
     initialValues: {
