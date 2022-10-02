@@ -6,15 +6,12 @@ import { Box, Checkbox, FormControlLabel } from '@mui/material';
 
 
 const FilterForm = () => {
-    const filterIconButton = document.getElementById('filter-icon-button');
-
+    
     const handleClickOnIcon = () =>{
+        
+        const filterIconButton = document.getElementById('filter-icon-button');
 
-
-        console.log(filterIconButton);
         filterIconButton?.classList.toggle('activeIcon');
-        console.log(filterIconButton);
-
         Array.from(document.getElementsByClassName('form-checkbox')).forEach(item=>{
             item.classList.toggle('toggle-hidden');
         })

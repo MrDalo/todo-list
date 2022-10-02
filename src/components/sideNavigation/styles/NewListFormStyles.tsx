@@ -25,4 +25,9 @@ export const StyledForm = styled('form')`
   align-items: center;
   flex-direction: column;
   row-gap: 20px;
+  transition: 1s;
+
+  &.hidden-new-list-form{
+    transform: translateY(-110%);
+  }
 `;

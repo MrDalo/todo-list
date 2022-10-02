@@ -1,25 +1,41 @@
 import React from "react";
 import {Box, IconButton} from "@mui/material";
 import ToDoListNav from "./ToDoListNav";
-import { StyledAddCircleOutlineIcon, StyledAppBar, StyledBox, StyledTitle, StyledToolbar, StyledIconButton} from "./styles/SideBarStyles";
+import { StyledAddCircleOutlineIcon,  StyledMainBox, StyledAppBar, StyledBox, StyledTitle, StyledToolbar, StyledMenuIconButton, StyledCircleIconButton} from "./styles/SideBarStyles";
 import NewListForm from "./NewListForm";
 import MenuIcon from '@mui/icons-material/Menu';
 
 const SideBar = () => {
-  return (
-    <Box
-      sx={{
-        position: "fixed",
-        width: "25%",
-        height: "100vh",
-      }}
-    >
-      <StyledAppBar>
-        <StyledIconButton>
-          <MenuIcon sx={{fontSize: '40px'}}/>
-        </StyledIconButton>
 
-        <StyledToolbar>
+  
+  const handleBurgerMenuClick = () =>{
+    const arrayOfElements = document.getElementsByClassName('toggle-element');
+
+
+    Array.from(arrayOfElements).forEach(element =>{
+      element?.classList.toggle('hidden-side-menu');
+    });
+
+  }
+
+
+  const handleAddListIconClick= () =>{
+    document.getElementById('add-task-button')?.classList.toggle('activeIcon');
+    document.getElementById('new-list-form')?.classList.toggle('hidden-new-list-form');
+    
+  }
+
+
+
+
+  return (
+    <StyledMainBox className="toggle-element">
+      <StyledAppBar className="toggle-element">
+        <StyledMenuIconButton className="toggle-element" onClick={handleBurgerMenuClick}>
+          <MenuIcon sx={{fontSize: '40px'}}/>
+        </StyledMenuIconButton>
+
+        <StyledToolbar className="toggle-element">
 
             <StyledTitle
               className="titleTypo"  
@@ -31,15 +47,15 @@ const SideBar = () => {
             <StyledBox>
                 <ToDoListNav/>
             </StyledBox>
-            <IconButton>
+            <StyledCircleIconButton id="add-task-button" onClick={handleAddListIconClick}>
                 <StyledAddCircleOutlineIcon />
-            </IconButton>
+            </StyledCircleIconButton>
             
-            <NewListForm />
+            <NewListForm  />
 
         </StyledToolbar>
       </StyledAppBar>
-    </Box>
+    </StyledMainBox>
   );
 };
 

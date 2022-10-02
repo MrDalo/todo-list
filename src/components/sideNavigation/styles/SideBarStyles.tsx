@@ -2,7 +2,19 @@ import { styled } from "@mui/material/styles";
 import { AppBar, Typography, Box, Toolbar, IconButton } from "@mui/material";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
-export const StyledIconButton = styled(IconButton)`
+
+export const StyledMainBox = styled(Box)`
+  position: fixed;
+  width: 25%;
+  height: 100vh;
+  transition: 2s;
+
+  &.hidden-side-menu{
+    transform: translateX(-70%);
+  }
+`;
+
+export const StyledMenuIconButton = styled(IconButton)`
   position: absolute;
   right: 15px;
   top: 15px;
@@ -10,13 +22,36 @@ export const StyledIconButton = styled(IconButton)`
   color: white;
   font-size: 40px;
   z-index: 3;
+
+  transition: 2s color;
+
+  &.hidden-side-menu{
+    color: #1976d2;
+  }
+
 `;
+
+export const StyledCircleIconButton = styled(IconButton)`
+  transition-property: transform;
+  transition-duration: 1s;
+  z-index: 3;
+
+  &.activeIcon{
+      transform: rotate(360deg);
+  }
+
+`;
+
 
 export const StyledToolbar = styled(Toolbar)`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   padding-top: 80px;
+
+  &.hidden-side-menu{
+    display: none;
+  }
 `
 
 export const StyledBox = styled(Box)`
@@ -52,6 +87,14 @@ export const StyledAppBar = styled(AppBar)`
 
   border-top-right-radius: 40px;
   border-bottom-right-radius: 40px;
+
+
+  transition: 2s;
+
+  &.hidden-side-menu{
+    background-color: white;
+    box-shadow: none;
+  }
 `;
 
 
@@ -60,3 +103,5 @@ export const StyledAddCircleOutlineIcon = styled(AddCircleOutlineIcon)`
   font-size: 36px;
 
 `;
+
+

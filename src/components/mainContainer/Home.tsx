@@ -3,6 +3,7 @@ import React from 'react'
 import {StyledBox} from './styles/HomeStyles'
 
 const Home = () => {
+
   return (
     <StyledBox>
         <Typography

@@ -13,14 +13,14 @@ export const StyledFormGroup = styled(FormGroup)`
     overFlow: hidden;
 
     transition-duration: 2s;
-    
+
     &.toggle-hidden{
         transform: translateX(100%);
     }
-    
-    
+
+
 `;
-    
+
 
 
 
@@ -33,11 +33,6 @@ export const StyledIconButton = styled(IconButton)`
     &.activeIcon{
         transform: rotate(360deg);
     }
-
-    @keyframes filterRotation{
-        to {transform: rotate(360deg);}
-    }
-
 
 `;
 
