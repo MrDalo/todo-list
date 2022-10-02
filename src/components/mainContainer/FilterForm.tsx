@@ -12,7 +12,7 @@ const FilterForm = () => {
         const filterIconButton = document.getElementById('filter-icon-button');
 
         filterIconButton?.classList.toggle('activeIcon');
-        Array.from(document.getElementsByClassName('form-checkbox')).forEach(item=>{
+        Array.from(document.getElementsByClassName('form-radios')).forEach(item=>{
             item.classList.toggle('toggle-hidden');
         })
     }
@@ -29,7 +29,7 @@ const FilterForm = () => {
             }}
         >
 
-            <StyledFormControl className='form-checkbox'>
+            <StyledFormControl className='form-radios toggle-hidden'>
                 <StyledRadioGroup
                     row
                     defaultValue="All"
