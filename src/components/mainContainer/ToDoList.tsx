@@ -1,11 +1,24 @@
-import React from 'react'
-import { useParams } from 'react-router-dom';
+import React from 'react';
+import { List } from '@mui/material';
+import ToDoListItem from './ToDoListItem';
+import { StyledBox } from './styles/ToDoListStyles';
 
 const ToDoList = () => {
-    const { id } = useParams();
-
   return (
-    <div>ToDoList {id}</div>
+    <StyledBox>
+        <List>
+            <ToDoListItem />
+            <ToDoListItem />
+            <ToDoListItem />
+            <ToDoListItem />
+            <ToDoListItem />
+            <ToDoListItem />
+            <ToDoListItem />
+            <ToDoListItem />
+            <ToDoListItem />
+            
+        </List>
+    </StyledBox>
   );
 }
 

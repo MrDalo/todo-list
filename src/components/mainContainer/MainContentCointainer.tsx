@@ -3,6 +3,7 @@ import { StyledContainer, StyledAccountCircleOutlinedIcon } from './styles/MainC
 import { Typography } from '@mui/material';
 import SearchForm from './SearchForm';
 import FilterForm from './FilterForm';
+import ToDoListSection from './ToDoListSection';
 
 
 
@@ -23,6 +24,8 @@ const MainContentCointainer = () => {
         <SearchForm />
 
         <FilterForm />
+
+        <ToDoListSection />
 
 
 

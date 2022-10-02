@@ -1,5 +1,4 @@
 import React from "react";
-import {Box, IconButton} from "@mui/material";
 import ToDoListNav from "./ToDoListNav";
 import { StyledAddCircleOutlineIcon,  StyledMainBox, StyledAppBar, StyledBox, StyledTitle, StyledToolbar, StyledMenuIconButton, StyledCircleIconButton} from "./styles/SideBarStyles";
 import NewListForm from "./NewListForm";
