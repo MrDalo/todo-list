@@ -6,22 +6,26 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 
 export const StyledContainer = styled(Container)`
     position: relative;
-    margin-left: 30%;
-    width: 70%;
+    width: 100%;
     height: 100vh;
-    padding-right: 10%;
-    padding-left: 0;
-
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
+    
+    // margin-right: 0;
+    // margin-left: 0;
+    z-index: 1;
 
-    transition-duration: 0.5s;
+
+    padding-right: 10%;
+    padding-left: 30%;
+
+
+    transition-duration: 2s;
 
     &.hidden-side-menu{
-        margin-left: 10%;
-        width: 80%; 
+        padding-left: 10%;
     }
     
 `;

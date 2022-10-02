@@ -9,13 +9,17 @@ export const StyledBox = styled (Box)`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    transition-duration: 0.5s;
+    
+    transition-duration: 2s;
 
     padding-left: 30%;
     padding-right: 10%;
 
+    z-index: 1;
+
 
     &.hidden-side-menu{
-        padding: 0;
+        padding-left: 10%;
+        padding-right: 10%;
     }
 `;

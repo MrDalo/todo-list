@@ -9,14 +9,14 @@ import ToDoListSection from './ToDoListSection';
 
 const MainContentCointainer = () => {
   return (
-    <StyledContainer id="main-content" disableGutters>
+    <StyledContainer id="main-content-container" maxWidth={false} disableGutters >
         <StyledAccountCircleOutlinedIcon />
         <Typography
             variant='h3'
             align='center'
             width={'100%'}
-            marginTop={'5%'}
-            marginBottom={'3%'}
+            marginTop={'5vh'}
+            marginBottom={'3vh'}
         >
             Task list
         </Typography>

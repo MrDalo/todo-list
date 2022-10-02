@@ -5,7 +5,7 @@ import {StyledBox} from './styles/HomeStyles'
 const Home = () => {
 
   return (
-    <StyledBox>
+    <StyledBox id="home-box">
         <Typography
             variant='h1'
             align='center'

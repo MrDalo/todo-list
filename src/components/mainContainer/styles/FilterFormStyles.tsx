@@ -12,7 +12,7 @@ export const StyledFormGroup = styled(FormGroup)`
     height: 40px;
     overFlow: hidden;
 
-    transition-duration: 2s;
+    transition-duration: 1.5s;
 
     &.toggle-hidden{
         transform: translateX(100%);

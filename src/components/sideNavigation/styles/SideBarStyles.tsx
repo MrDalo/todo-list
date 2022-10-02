@@ -9,6 +9,8 @@ export const StyledMainBox = styled(Box)`
   height: 100vh;
   transition: 2s;
 
+  z-index: 2;
+
   &.hidden-side-menu{
     transform: translateX(-70%);
   }

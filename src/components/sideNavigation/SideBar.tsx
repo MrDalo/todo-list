@@ -9,7 +9,11 @@ const SideBar = () => {
   
   const handleBurgerMenuClick = () =>{
     const arrayOfElements = document.getElementsByClassName('toggle-element');
+    const homeBox = document.getElementById("home-box");
+    const mainContentContainer = document.getElementById('main-content-container');
 
+    homeBox?.classList.toggle('hidden-side-menu');
+    mainContentContainer?.classList.toggle('hidden-side-menu');
 
     Array.from(arrayOfElements).forEach(element =>{
       element?.classList.toggle('hidden-side-menu');
