@@ -26,7 +26,7 @@ export const getItemsAsync = createAsyncThunk(
             return res.data;
         })
         .catch(error =>{
-            return error.message;
+            return error;
         })
 
         return await response;
@@ -51,7 +51,7 @@ export const createItemAsync = createAsyncThunk(
             return res.data;
         })
         .catch(error =>{
-            return error.message;
+            return error;
         })
 
         return await response;
@@ -67,7 +67,7 @@ export const deleteItemAsync = createAsyncThunk(
             console.log('Delete successful');
         })
         .catch(error =>{
-            console.log('Delete unsuccessful: ', error.message);
+            return error;
         })
 
         return await payload.id;
@@ -86,7 +86,7 @@ export const checkboxItemAsync = createAsyncThunk(
             return res.data;
         })
         .catch(error =>{
-            return error.message;
+            return error;
         })
 
         return await response;
@@ -182,20 +182,88 @@ const toDoItemSlice = createSlice({
 
     },
     extraReducers: (builder) => {
-        builder.addCase(getItemsAsync.fulfilled, (state, action) =>{
+        builder.addCase(getItemsAsync.rejected, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.add('error');
+            setTimeout(()=>{messageWindow?.classList.remove('error')}, 2000);
+            messageWindow!.innerHTML = "<p>Error occured!</p>";
+        })
+        .addCase(getItemsAsync.pending, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.add('loading');
+            messageWindow!.innerHTML = "<p>Loading items...</p>";
+        })
+        .addCase(getItemsAsync.fulfilled, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.remove('loading');
+            messageWindow?.classList.add('success');
+            messageWindow!.innerHTML = "<p>Items loaded!</p>";
+            setTimeout(()=>{messageWindow?.classList.remove('success')}, 2000);
+
             const returnObject: IItem = {toDoItems: action.payload, searchString: state.searchString, filterString: state.filterString};
             return returnObject;
         })
-        builder.addCase(createItemAsync.fulfilled, (state, action) =>{
+        .addCase(createItemAsync.rejected, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.add('error');
+            setTimeout(()=>{messageWindow?.classList.remove('error')}, 2000);
+            messageWindow!.innerHTML = "<p>Error occured!</p>";
+        })
+        .addCase(createItemAsync.pending, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.add('loading');
+            messageWindow!.innerHTML = "<p>Creating item...</p>";
+        })
+        .addCase(createItemAsync.fulfilled, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.remove('loading');
+            messageWindow?.classList.add('success');
+            messageWindow!.innerHTML = "<p>Item created!</p>";
+            setTimeout(()=>{messageWindow?.classList.remove('success')}, 2000);
+
             state.toDoItems.push(action.payload);
         })
-        builder.addCase(deleteItemAsync.fulfilled, (state, action) =>{
+        .addCase(deleteItemAsync.rejected, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.add('error');
+            setTimeout(()=>{messageWindow?.classList.remove('error')}, 2000);
+            messageWindow!.innerHTML = "<p>Error occured!</p>";
+        })
+        .addCase(deleteItemAsync.pending, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.add('loading');
+            messageWindow!.innerHTML = "<p>Deleting item...</p>";
+        })
+        .addCase(deleteItemAsync.fulfilled, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.remove('loading');
+            messageWindow?.classList.add('success');
+            messageWindow!.innerHTML = "<p>Item deleted!</p>";
+            setTimeout(()=>{messageWindow?.classList.remove('success')}, 2000);
+            
             const tasks = state.toDoItems.filter(item => item.id !== action.payload);
             return {...state, toDoItems: tasks};
         })
-        builder.addCase(checkboxItemAsync.fulfilled, (state, action) =>{
-            state.toDoItems.forEach(item => item.id === action.payload.id ? item.checked = action.payload.checked : item.checked);
+        .addCase(checkboxItemAsync.rejected, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.add('error');
+            setTimeout(()=>{messageWindow?.classList.remove('error')}, 2000);
+            messageWindow!.innerHTML = "<p>Error occured!</p>";
         })
+        .addCase(checkboxItemAsync.pending, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.add('loading');
+            messageWindow!.innerHTML = "<p>Loading...</p>";
+        })
+        .addCase(checkboxItemAsync.fulfilled, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.remove('loading');
+            messageWindow?.classList.add('success');
+            messageWindow!.innerHTML = "<p>Successful action!</p>";
+            setTimeout(()=>{messageWindow?.classList.remove('success')}, 2000);
+            
+            state.toDoItems.forEach(item => item.id === action.payload.id ? item.checked = action.payload.checked : item.checked);
+        });
 
     }
 });

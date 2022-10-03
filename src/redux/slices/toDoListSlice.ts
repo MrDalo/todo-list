@@ -22,7 +22,7 @@ export const getListsAsync = createAsyncThunk(
             return res.data;
         })
         .catch(error =>{
-            return error.message;
+            return error;
         })
 
         return await response;
@@ -44,7 +44,7 @@ export const addListAsync = createAsyncThunk(
             return res.data;
         })
         .catch(error =>{
-            console.log(error.message);
+            return error;
         })
 
         return await response;
@@ -104,14 +104,47 @@ const toDoListSlice = createSlice({
 
     },
     extraReducers: (builder) => {
-        builder.addCase(getListsAsync.fulfilled, (state, action) =>{
-            // console.log('payload: ',action.payload);
+        builder.addCase(getListsAsync.rejected, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.add('error');
+            setTimeout(()=>{messageWindow?.classList.remove('error')}, 2000);
+            messageWindow!.innerHTML = "<p>Error occured!</p>";
+        })
+        .addCase(getListsAsync.pending, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.add('loading');
+            messageWindow!.innerHTML = "<p>Loading lists...</p>";
+        })
+        .addCase(getListsAsync.fulfilled, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.remove('loading');
+            messageWindow?.classList.add('success');
+            messageWindow!.innerHTML = "<p>Lists loaded!</p>";
+            setTimeout(()=>{messageWindow?.classList.remove('success')}, 2000);
+
             const returnObject:IList = {toDoLists: action.payload, activeID: state.activeID};
             return returnObject;
         })
-        builder.addCase(addListAsync.fulfilled, (state, action) =>{
-            state.toDoLists.push(action.payload);
+        .addCase(addListAsync.rejected, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.add('error');
+            setTimeout(()=>{messageWindow?.classList.remove('error')}, 2000);
+            messageWindow!.innerHTML = "<p>Error occured!</p>";
         })
+        .addCase(addListAsync.pending, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.add('loading');
+            messageWindow!.innerHTML = "<p>Creating new list...</p>";
+        })
+        .addCase(addListAsync.fulfilled, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.remove('loading');
+            messageWindow?.classList.add('success');
+            messageWindow!.innerHTML = "<p>New list created!</p>";
+            setTimeout(()=>{messageWindow?.classList.remove('success')}, 2000);
+
+            state.toDoLists.push(action.payload);
+        });
 
     }
 });
