@@ -8,7 +8,7 @@ const SearchForm = () => {
 
     const onSubmitFunction = ( values:{searchingItem: string;}, actions: FormikHelpers<{searchingItem: string;}>) =>{
         console.log("SUBMITTED");
-        // actions.resetForm();
+        actions.resetForm();
     }
 
     const formik = useFormik({
@@ -18,6 +18,7 @@ const SearchForm = () => {
         onSubmit: (values, actions) => {
           onSubmitFunction(values, actions);
         },
+        
     });
 
 

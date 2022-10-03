@@ -11,6 +11,12 @@ export interface IToDoItem{
     checked: boolean
 }
 
+export interface IItem{
+    toDoItems: IToDoItem[],
+    searchString: string,
+    filterString: string
+}
+
 export const getItemsAsync = createAsyncThunk(
     'items/getItemsAsync',
     async (id: string)=>{
@@ -68,33 +74,37 @@ export const deleteItemAsync = createAsyncThunk(
     }
 );
 
-const initialStateVar: IToDoItem[] = [];
-const initialStateTestingData: IToDoItem[] = [
-    {
-        id: uuidv4(),
-        name: "Task 1",
-        description: "Description 1",
-        date: new Date().toLocaleString(),
-        taskListId: uuidv4(),
-        checked: false
-    },
-    {
-        id: uuidv4(),
-        name: "Task 2",
-        description: "Description 2",
-        date: new Date().toLocaleString(),
-        taskListId: uuidv4(),
-        checked: false
-    },
-    {
-        id: uuidv4(),
-        name: "Task 3",
-        description: "Description 3",
-        date: new Date().toLocaleString(),
-        taskListId: uuidv4(),
-        checked: true
-    },
-];
+const initialStateVar: IItem = {toDoItems: [], searchString: "", filterString: "All"};
+const initialStateTestingData: IItem ={
+    toDoItems: [
+        {
+            id: uuidv4(),
+            name: "Task 1",
+            description: "Description 1",
+            date: new Date().toLocaleString(),
+            taskListId: uuidv4(),
+            checked: false
+        },
+        {
+            id: uuidv4(),
+            name: "Task 2",
+            description: "Description 2",
+            date: new Date().toLocaleString(),
+            taskListId: uuidv4(),
+            checked: false
+        },
+        {
+            id: uuidv4(),
+            name: "Task 3",
+            description: "Description 3",
+            date: new Date().toLocaleString(),
+            taskListId: uuidv4(),
+            checked: true
+        }
+    ],
+    searchString: "",
+    filterString: "All"
+};
 
 const toDoItemSlice = createSlice({
     name: "toDoItem",
@@ -110,17 +120,8 @@ const toDoItemSlice = createSlice({
                 checked: action.payload.checked
             };
 
-            state.push(newToDoItem);
+            state.toDoItems.push(newToDoItem);
 
-        },
-        readItems: (state, action) =>{
-
-        },
-        updateItem: (state, action: PayloadAction<string>) =>{
-
-        },
-        deleteItem: (state, action: PayloadAction<string>)=>{
-            return state.filter(item => item.id !== action.payload);
         },
         filterItems: (state, action: PayloadAction<string>)=>{
 
@@ -143,21 +144,26 @@ const toDoItemSlice = createSlice({
             }
 
         },
+        updateItem: (state, action: PayloadAction<string>)=>{
+
+        },
         checkedItem: (state, action: PayloadAction<string>)=>{
-            const task = state.filter(item => item.id === action.payload);
+            const task = state.toDoItems.filter(item => item.id === action.payload);
             task[0].checked = !task[0].checked; 
         }
 
     },
     extraReducers: (builder) => {
         builder.addCase(getItemsAsync.fulfilled, (state, action) =>{
-            return action.payload;
+            const returnObject: IItem = {toDoItems: action.payload, searchString: state.searchString, filterString: state.filterString};
+            return returnObject;
         })
         builder.addCase(createItemAsync.fulfilled, (state, action) =>{
-            state.push(action.payload);
+            state.toDoItems.push(action.payload);
         })
         builder.addCase(deleteItemAsync.fulfilled, (state, action) =>{
-            return state.filter(state => state.id !== action.payload);
+            const tasks = state.toDoItems.filter(item => item.id !== action.payload);
+            return {...state, toDoItems: tasks};
         })
 
     }

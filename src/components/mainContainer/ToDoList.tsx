@@ -11,7 +11,7 @@ import { toDoListActions } from "../../redux/slices/toDoListSlice";
 
 const ToDoList = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const toDoItems = useAppSelector((state) => state.toDoItem);
+  const toDoItems = useAppSelector((state) => state.toDoItem.toDoItems);
   const IDOfList = useAppSelector((state) => state.toDoList.activeID);
   const param  = useParams();
 

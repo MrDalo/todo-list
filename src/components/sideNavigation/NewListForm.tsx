@@ -12,10 +12,7 @@ const NewListForm = () => {
   const dispatch = useAppDispatch();
 
   const onSubmitFunction = ( values:{listName: string;}, actions: FormikHelpers<{listName: string;}>) =>{
-      console.log("SUBMITTED");
-      
       dispatch(addListAsync(values.listName));
-
       actions.resetForm();
   }
 
