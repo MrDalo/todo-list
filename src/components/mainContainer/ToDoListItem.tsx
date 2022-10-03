@@ -1,6 +1,6 @@
 import React from 'react';
 import { Checkbox, ListItemIcon, ListItemText, Typography } from '@mui/material';
-import { StyledListItem, StyledListItemIcon } from './styles/ToDoListItemStyles';
+import { StyledListItem, StyledListItemIcon, StyledTypography } from './styles/ToDoListItemStyles';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import IconButton from '@mui/material/IconButton';
@@ -9,7 +9,7 @@ import { checkboxItemAsync, deleteItemAsync, IToDoItem, toDoItemActions } from '
 
 
 interface IProps extends IToDoItem{
-
+  
 }
 
 
@@ -41,22 +41,27 @@ const ToDoListItem = ({id, name, description, date, taskListId, checked}: IProps
           }}
         />
         <ListItemText>
-          <Typography
+          <StyledTypography
             variant='h5'
             padding={'5px 0'}
             overflow={'auto'}
+            className={checked ? "checked" : ""}
           >
             {name}
-          </Typography>
-          <Typography overflow={'auto'}>
+          </StyledTypography>
+          <StyledTypography 
+            overflow={'auto'}
+            className={checked ? "checked" : ""}
+          >
             {description}
-          </Typography>
-          <Typography
+          </StyledTypography>
+          <StyledTypography
             variant='body2'
             padding={'5px 0'}
+            className={checked ? "checked" : ""}
           >
             {date.toLocaleString()}
-          </Typography>
+          </StyledTypography>
         </ListItemText>
         <StyledListItemIcon>
           <IconButton onClick={handleEditButtonAction}>

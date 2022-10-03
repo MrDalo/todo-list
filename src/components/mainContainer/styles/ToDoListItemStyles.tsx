@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { ListItem, ListItemIcon } from "@mui/material";
+import { ListItem, ListItemIcon, Typography } from "@mui/material";
 
 
 
@@ -17,6 +17,12 @@ export const StyledListItem = styled(ListItem)`
     border-radius: 20px;
 
     
+`;
+
+export const StyledTypography = styled(Typography)`
+    &.checked{
+        text-decoration: line-through;
+    }
 `;
 
 export const StyledListItemIcon = styled(ListItemIcon)`

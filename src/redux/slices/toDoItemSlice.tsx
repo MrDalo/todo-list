@@ -147,21 +147,30 @@ const toDoItemSlice = createSlice({
             switch(action.payload){
                 case "All":{
                     console.log("All");
+                    state.filterString = "All";
                     break;                    
                 }
                 case "Active":{
                     console.log("Active");
-                    
+                    state.filterString = "Active";
                     break;
                 }
                 case "Finished":{
-                    
                     console.log("Finished");
+                    state.filterString = "Finished"
                     break;
                 }
 
             }
 
+        },
+        searchItems: (state, action: PayloadAction<string>)=>{
+            console.log(action.payload);
+            state.searchString = action.payload;
+            
+        },
+        clearSearchInput: (state)=>{
+            state.searchString = "";
         },
         updateItem: (state, action: PayloadAction<string>)=>{
 
