@@ -52,32 +52,32 @@ export const addListAsync = createAsyncThunk(
 );
 
 const initialStateVar: IList = {toDoLists: [], activeID: '0'};
-const initialStateTestingData: IList ={
-    toDoLists:[
-        {
-            id: '1',
-            name: "TaskList 1"
-        },
-        {
-            id: '2',
-            name: "TaskList 2"
-        },
-        {
-            id: '3',
-            name: "TaskList 3"
-        },
-        {
-            id: '4',
-            name: "TaskList 4"
-        },
-        {
-            id: '5',
-            name: "TaskList 5"
-        }
+// const initialStateTestingData: IList ={
+//     toDoLists:[
+//         {
+//             id: '1',
+//             name: "TaskList 1"
+//         },
+//         {
+//             id: '2',
+//             name: "TaskList 2"
+//         },
+//         {
+//             id: '3',
+//             name: "TaskList 3"
+//         },
+//         {
+//             id: '4',
+//             name: "TaskList 4"
+//         },
+//         {
+//             id: '5',
+//             name: "TaskList 5"
+//         }
     
-    ],
-    activeID: '1'
-} 
+//     ],
+//     activeID: '1'
+// } 
 
 const toDoListSlice = createSlice({
     name: "toDoList",

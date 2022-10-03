@@ -3,8 +3,7 @@ import { useFormik, FormikHelpers } from 'formik';
 import { addListSchema } from '../../formikSchemas/addListFormSchema';
 import { StyledButton, StyledForm, StyledInputBase } from './styles/NewListFormStyles';
 import { Box, Typography } from '@mui/material';
-import { addListAsync, toDoListActions } from '../../redux/slices/toDoListSlice';
-import {v4 as uuidv4} from 'uuid';
+import { addListAsync } from '../../redux/slices/toDoListSlice';
 import { useAppDispatch } from '../../redux/hooks';
 
 const NewListForm = () => {

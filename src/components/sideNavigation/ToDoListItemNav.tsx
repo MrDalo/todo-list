@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { useAppDispatch } from '../../redux/hooks';
 import { toDoListActions } from '../../redux/slices/toDoListSlice';
 import { StyledLink, StyledListItem, StyledListItemButton, StyledListItemText } from './styles/ToDoListItemNavStyles';
 

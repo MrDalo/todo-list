@@ -62,7 +62,7 @@ export const deleteItemAsync = createAsyncThunk(
     'items/deleteItemsAsync',
     async (payload: {id: string, taskListId: string})=>{
         
-        const response = await axios.delete(`https://63348dc4849edb52d6f3c6e3.mockapi.io/taskLists/${payload.taskListId}/taskItems/${payload.id}`)
+        await axios.delete(`https://63348dc4849edb52d6f3c6e3.mockapi.io/taskLists/${payload.taskListId}/taskItems/${payload.id}`)
         .then(res=>{
             console.log('Delete successful');
         })
@@ -94,36 +94,36 @@ export const checkboxItemAsync = createAsyncThunk(
 );
 
 const initialStateVar: IItem = {toDoItems: [], searchString: "", filterString: "All"};
-const initialStateTestingData: IItem ={
-    toDoItems: [
-        {
-            id: uuidv4(),
-            name: "Task 1",
-            description: "Description 1",
-            date: new Date().toLocaleString(),
-            taskListId: uuidv4(),
-            checked: false
-        },
-        {
-            id: uuidv4(),
-            name: "Task 2",
-            description: "Description 2",
-            date: new Date().toLocaleString(),
-            taskListId: uuidv4(),
-            checked: false
-        },
-        {
-            id: uuidv4(),
-            name: "Task 3",
-            description: "Description 3",
-            date: new Date().toLocaleString(),
-            taskListId: uuidv4(),
-            checked: true
-        }
-    ],
-    searchString: "",
-    filterString: "All"
-};
+// const initialStateTestingData: IItem ={
+//     toDoItems: [
+//         {
+//             id: uuidv4(),
+//             name: "Task 1",
+//             description: "Description 1",
+//             date: new Date().toLocaleString(),
+//             taskListId: uuidv4(),
+//             checked: false
+//         },
+//         {
+//             id: uuidv4(),
+//             name: "Task 2",
+//             description: "Description 2",
+//             date: new Date().toLocaleString(),
+//             taskListId: uuidv4(),
+//             checked: false
+//         },
+//         {
+//             id: uuidv4(),
+//             name: "Task 3",
+//             description: "Description 3",
+//             date: new Date().toLocaleString(),
+//             taskListId: uuidv4(),
+//             checked: true
+//         }
+//     ],
+//     searchString: "",
+//     filterString: "All"
+// };
 
 const toDoItemSlice = createSlice({
     name: "toDoItem",

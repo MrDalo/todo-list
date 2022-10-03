@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { StyledContainer, StyledAccountCircleOutlinedIcon } from './styles/MainContentContainerStyles';
 import { Typography } from '@mui/material';
 import SearchForm from './SearchForm';
 import FilterForm from './FilterForm';
 import ToDoListSection from './ToDoListSection';
-import { useAppSelector } from '../../redux/hooks';
+// import { useAppSelector } from '../../redux/hooks';
 
 
 
 const MainContentCointainer = () => {
-  const toDoListName = useAppSelector((state) =>state.toDoList.toDoLists.filter(list=> state.toDoList.activeID === list.id));
+  // const toDoListName = useAppSelector((state) =>state.toDoList.toDoLists.filter(list=> state.toDoList.activeID === list.id));
 
   
   return (

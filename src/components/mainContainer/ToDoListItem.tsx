@@ -1,5 +1,5 @@
 import React from 'react';
-import { Checkbox, ListItemIcon, ListItemText, Typography } from '@mui/material';
+import { Checkbox, ListItemText } from '@mui/material';
 import { StyledListItem, StyledListItemIcon, StyledTypography } from './styles/ToDoListItemStyles';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';

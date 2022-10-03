@@ -4,7 +4,7 @@ import { useFormik, FormikHelpers } from 'formik';
 import { StyledForm, StyledBox, StyledButtonBox, StyledInputBase, StyledTaskNameInputBox } from './styles/AddItemFormStyles';
 import { addItemSchema } from '../../formikSchemas/addItemFormSchema';
 import { useAppDispatch } from '../../redux/hooks';
-import { createItemAsync, IToDoItem, toDoItemActions } from '../../redux/slices/toDoItemSlice';
+import { createItemAsync } from '../../redux/slices/toDoItemSlice';
 import {v4 as uuidv4} from 'uuid';
 import { useParams } from 'react-router-dom';
 

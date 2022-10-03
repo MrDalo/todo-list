@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { List } from "@mui/material";
 import ToDoListItem from "./ToDoListItem";
 import { StyledBox } from "./styles/ToDoListStyles";
-import { useAppSelector, useAppDispatch } from "../../redux/hooks";
+import { useAppSelector } from "../../redux/hooks";
 import { useDispatch } from "react-redux";
 import { getItemsAsync } from "../../redux/slices/toDoItemSlice";
 import { AppDispatch } from "../../redux/store";
