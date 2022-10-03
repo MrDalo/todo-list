@@ -4,7 +4,7 @@ import { useFormik, FormikHelpers } from 'formik';
 import { StyledForm, StyledBox, StyledButtonBox, StyledInputBase, StyledTaskNameInputBox } from './styles/AddItemFormStyles';
 import { addItemSchema } from '../../formikSchemas/addItemFormSchema';
 import { useAppDispatch } from '../../redux/hooks';
-import { IToDoItem, toDoItemActions } from '../../redux/slices/toDoItemSlice';
+import { createItemAsync, IToDoItem, toDoItemActions } from '../../redux/slices/toDoItemSlice';
 import {v4 as uuidv4} from 'uuid';
 import { useParams } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ const AddItemForm = () => {
 
   const URLID = useParams().id;
   
-  const idOfParent = URLID !== undefined ? URLID : "lostTaskWithNoParent";
+  const idOfParent = URLID !== undefined ? URLID : "1";
   
   const onSubmitFunction = ( 
     values:{
@@ -27,7 +27,7 @@ const AddItemForm = () => {
       taskDate: Date;
     }>) =>
     {
-      dispatch(toDoItemActions.createNewItem({
+      dispatch(createItemAsync({
         id: uuidv4(),
         name: values.taskName,
         description: values.taskDescription,

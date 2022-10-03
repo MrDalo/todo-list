@@ -27,6 +27,31 @@ export const getItemsAsync = createAsyncThunk(
     }
 );
 
+export const createItemAsync = createAsyncThunk(
+    'items/createItemsAsync',
+    async (payload: IToDoItem)=>{
+        
+        const response = await axios.post(`https://63348dc4849edb52d6f3c6e3.mockapi.io/taskLists/${payload.taskListId}/taskItems`,
+        {
+            id: uuidv4(),
+            name: payload.name,
+            description: payload.description,
+            date: payload.date,
+            taskListId: payload.taskListId,
+            checked: payload.checked
+
+        })
+        .then(res=>{
+            return res.data;
+        })
+        .catch(error =>{
+            return error.message;
+        })
+
+        return await response;
+    }
+);
+
 const initialStateVar: IToDoItem[] = [];
 const initialStateTestingData: IToDoItem[] = [
     {
@@ -112,6 +137,9 @@ const toDoItemSlice = createSlice({
         builder.addCase(getItemsAsync.fulfilled, (state, action) =>{
             // console.log('payload: ',action.payload);
             return action.payload;
+        })
+        builder.addCase(createItemAsync.fulfilled, (state, action) =>{
+            state.push(action.payload);
         })
 
     }

@@ -31,7 +31,7 @@ const ToDoList = () => {
   return (
     <StyledBox>
       <List>
-        {/* {toDoItems.map((item, index) => (
+        {toDoItems.map((item, index) => (
           <ToDoListItem
             key={index}
             id={item.id}
@@ -41,7 +41,7 @@ const ToDoList = () => {
             taskListId={item.taskListId}
             checked={item.checked}
           />
-        ))} */}
+        ))}
       </List>
     </StyledBox>
   );
