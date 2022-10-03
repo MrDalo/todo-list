@@ -13,7 +13,14 @@ const ToDoList = () => {
   const dispatch = useDispatch<AppDispatch>();
   const toDoItems = useAppSelector((state) => state.toDoItem.toDoItems);
   const IDOfList = useAppSelector((state) => state.toDoList.activeID);
+  const searchString = useAppSelector((state) => state.toDoItem.searchString);
+  const filterString = useAppSelector((state) => state.toDoItem.filterString);
+  
   const param  = useParams();
+
+    //filtering
+  let filteredItems = toDoItems.filter(item => filterString === "All" ? item : filterString === "Active" ? item.checked === false : item.checked === true);
+  filteredItems = filteredItems.filter(item => (item.description.toLowerCase()).includes(searchString.toLowerCase()) || (item.name.toLowerCase()).includes(searchString.toLowerCase()));
 
   useEffect(()=>{
     if(IDOfList !== '0'){
@@ -31,17 +38,19 @@ const ToDoList = () => {
   return (
     <StyledBox>
       <List>
-        {toDoItems.map((item, index) => (
-          <ToDoListItem
-            key={index}
-            id={item.id}
-            name={item.name}
-            description={item.description}
-            date={item.date}
-            taskListId={item.taskListId}
-            checked={item.checked}
-          />
-        ))}
+        {
+          filteredItems.map((item, index) => (
+            <ToDoListItem
+              key={index}
+              id={item.id}
+              name={item.name}
+              description={item.description}
+              date={item.date}
+              taskListId={item.taskListId}
+              checked={item.checked}
+            />
+          ))
+        }
       </List>
     </StyledBox>
   );
