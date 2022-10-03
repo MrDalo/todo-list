@@ -5,7 +5,7 @@ import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutl
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import IconButton from '@mui/material/IconButton';
 import { useAppDispatch } from '../../redux/hooks';
-import { IToDoItem, toDoItemActions } from '../../redux/slices/toDoItemSlice';
+import { deleteItemAsync, IToDoItem, toDoItemActions } from '../../redux/slices/toDoItemSlice';
 
 
 interface IProps extends IToDoItem{
@@ -22,7 +22,7 @@ const ToDoListItem = ({id, name, description, date, taskListId, checked}: IProps
   }
   
   const handleDeleteButtonAction = () =>{
-    dispatch(toDoItemActions.deleteItem(id));
+    dispatch(deleteItemAsync({id: id, taskListId: taskListId}));
   }
 
   const handleCheckboxAction = () =>{

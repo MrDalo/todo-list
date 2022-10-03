@@ -52,6 +52,22 @@ export const createItemAsync = createAsyncThunk(
     }
 );
 
+export const deleteItemAsync = createAsyncThunk(
+    'items/deleteItemsAsync',
+    async (payload: {id: string, taskListId: string})=>{
+        
+        const response = await axios.delete(`https://63348dc4849edb52d6f3c6e3.mockapi.io/taskLists/${payload.taskListId}/taskItems/${payload.id}`)
+        .then(res=>{
+            console.log('Delete successful');
+        })
+        .catch(error =>{
+            console.log('Delete unsuccessful: ', error.message);
+        })
+
+        return await payload.id;
+    }
+);
+
 const initialStateVar: IToDoItem[] = [];
 const initialStateTestingData: IToDoItem[] = [
     {
@@ -135,11 +151,13 @@ const toDoItemSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(getItemsAsync.fulfilled, (state, action) =>{
-            // console.log('payload: ',action.payload);
             return action.payload;
         })
         builder.addCase(createItemAsync.fulfilled, (state, action) =>{
             state.push(action.payload);
+        })
+        builder.addCase(deleteItemAsync.fulfilled, (state, action) =>{
+            return state.filter(state => state.id !== action.payload);
         })
 
     }
