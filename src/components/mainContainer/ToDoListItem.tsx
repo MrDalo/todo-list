@@ -12,14 +12,13 @@ interface IProps extends IToDoItem{
 
 }
 
-const ToDoListItem = ({id, name, description, date, taskListId, checked}: IProps) => {
 
+const ToDoListItem = ({id, name, description, date, taskListId, checked}: IProps) => {
+  
   const dispatch = useAppDispatch();
 
   const handleEditButtonAction = () =>{
     dispatch(toDoItemActions.updateItem(id));
-
-
   }
   
   const handleDeleteButtonAction = () =>{

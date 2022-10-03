@@ -1,5 +1,6 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction, createAsyncThunk} from '@reduxjs/toolkit';
 import {v4 as uuidv4} from 'uuid';
+import axios from 'axios';
 
 export interface IToDoItem{
     id: string,
@@ -9,6 +10,22 @@ export interface IToDoItem{
     taskListId: string,
     checked: boolean
 }
+
+export const getItemsAsync = createAsyncThunk(
+    'items/getItemsAsync',
+    async (id: string)=>{
+        
+        const response = await axios.get(`https://63348dc4849edb52d6f3c6e3.mockapi.io/taskLists/${id}/taskItems`)
+        .then(res=>{
+            return res.data;
+        })
+        .catch(error =>{
+            return error.message;
+        })
+
+        return await response;
+    }
+);
 
 const initialStateVar: IToDoItem[] = [];
 const initialStateTestingData: IToDoItem[] = [
@@ -40,7 +57,7 @@ const initialStateTestingData: IToDoItem[] = [
 
 const toDoItemSlice = createSlice({
     name: "toDoItem",
-    initialState: initialStateTestingData,
+    initialState: initialStateVar,
     reducers: {
         createNewItem: (state, action: PayloadAction<IToDoItem>) =>{
             const newToDoItem = {
@@ -64,13 +81,38 @@ const toDoItemSlice = createSlice({
         deleteItem: (state, action: PayloadAction<string>)=>{
             return state.filter(item => item.id !== action.payload);
         },
-        filterItems: (state, action)=>{
+        filterItems: (state, action: PayloadAction<string>)=>{
+
+            switch(action.payload){
+                case "All":{
+                    console.log("All");
+                    break;                    
+                }
+                case "Active":{
+                    console.log("Active");
+                    
+                    break;
+                }
+                case "Finished":{
+                    
+                    console.log("Finished");
+                    break;
+                }
+
+            }
 
         },
         checkedItem: (state, action: PayloadAction<string>)=>{
             const task = state.filter(item => item.id === action.payload);
             task[0].checked = !task[0].checked; 
         }
+
+    },
+    extraReducers: (builder) => {
+        builder.addCase(getItemsAsync.fulfilled, (state, action) =>{
+            // console.log('payload: ',action.payload);
+            return action.payload;
+        })
 
     }
 });

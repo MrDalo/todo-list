@@ -3,7 +3,7 @@ import { useFormik, FormikHelpers } from 'formik';
 import { addListSchema } from '../../formikSchemas/addListFormSchema';
 import { StyledButton, StyledForm, StyledInputBase } from './styles/NewListFormStyles';
 import { Box, Typography } from '@mui/material';
-import { toDoListActions } from '../../redux/slices/toDoListSlice';
+import { addListAsync, toDoListActions } from '../../redux/slices/toDoListSlice';
 import {v4 as uuidv4} from 'uuid';
 import { useAppDispatch } from '../../redux/hooks';
 
@@ -14,10 +14,7 @@ const NewListForm = () => {
   const onSubmitFunction = ( values:{listName: string;}, actions: FormikHelpers<{listName: string;}>) =>{
       console.log("SUBMITTED");
       
-      dispatch(toDoListActions.addNewList({
-        id: uuidv4(),
-        name: values.listName,
-      }));
+      dispatch(addListAsync(values.listName));
 
       actions.resetForm();
   }
