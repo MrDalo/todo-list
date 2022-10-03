@@ -74,6 +74,25 @@ export const deleteItemAsync = createAsyncThunk(
     }
 );
 
+export const checkboxItemAsync = createAsyncThunk(
+    'items/checkboxItemsAsync',
+    async (payload: {id: string, taskListId: string, checked: boolean})=>{
+        
+        const response = await axios.put(`https://63348dc4849edb52d6f3c6e3.mockapi.io/taskLists/${payload.taskListId}/taskItems/${payload.id}`,
+        {
+            checked: payload.checked
+        })
+        .then(res=>{
+            return res.data;
+        })
+        .catch(error =>{
+            return error.message;
+        })
+
+        return await response;
+    }
+);
+
 const initialStateVar: IItem = {toDoItems: [], searchString: "", filterString: "All"};
 const initialStateTestingData: IItem ={
     toDoItems: [
@@ -164,6 +183,9 @@ const toDoItemSlice = createSlice({
         builder.addCase(deleteItemAsync.fulfilled, (state, action) =>{
             const tasks = state.toDoItems.filter(item => item.id !== action.payload);
             return {...state, toDoItems: tasks};
+        })
+        builder.addCase(checkboxItemAsync.fulfilled, (state, action) =>{
+            state.toDoItems.forEach(item => item.id === action.payload.id ? item.checked = action.payload.checked : item.checked);
         })
 
     }
