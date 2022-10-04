@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Checkbox, ListItemText, Typography } from '@mui/material';
 import { StyledForm, StyledInputBase, StyledListItem, StyledListItemIcon, StyledTypography } from './styles/ToDoListItemStyles';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
+import DoneOutlineOutlinedIcon from '@mui/icons-material/DoneOutlineOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import IconButton from '@mui/material/IconButton';
 import { useAppDispatch } from '../../redux/hooks';
@@ -148,7 +149,7 @@ const ToDoListItem = ({id, name, description, date, taskListId, checked}: IProps
                     onChange={formik.handleChange}
                     className={formik.errors.taskDate && formik.touched.taskDate ? "input-error" : ""}
                     sx={{ 
-                      width: '190px',
+                      width: '220px',
                       padding: '0px 10px',
                     }}
                 />
@@ -162,7 +163,7 @@ const ToDoListItem = ({id, name, description, date, taskListId, checked}: IProps
 
         <StyledListItemIcon>
           <IconButton onClick={handleEditButtonAction}>
-            <ModeEditOutlineOutlinedIcon sx={{color: 'black'}}/>
+            {editItemFlag ? <DoneOutlineOutlinedIcon sx={{color: 'black'}}/> : <ModeEditOutlineOutlinedIcon sx={{color: 'black'}}/>}
           </IconButton>
           <IconButton onClick={handleDeleteButtonAction}>
             <DeleteOutlineOutlinedIcon sx={{color: 'black'}} />
