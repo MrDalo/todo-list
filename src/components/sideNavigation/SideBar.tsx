@@ -4,8 +4,10 @@ import { StyledAddCircleOutlineIcon,  StyledMainBox, StyledAppBar, StyledBox, St
 import NewListForm from "./NewListForm";
 import MenuIcon from '@mui/icons-material/Menu';
 
+/**
+ * @brief Side menu component which encapsulates small components
+ */
 const SideBar = () => {
-
   
   const handleBurgerMenuClick = () =>{
     const arrayOfElements = document.getElementsByClassName('toggle-element');

@@ -9,6 +9,10 @@ import { AppDispatch } from "../../redux/store";
 import { useParams } from "react-router-dom";
 import { toDoListActions } from "../../redux/slices/toDoListSlice";
 
+
+/**
+ * @brief Unordered list of tasks(items) with Read opeartion of tasks
+ */
 const ToDoList = () => {
   const dispatch = useDispatch<AppDispatch>();
   const toDoItems = useAppSelector((state) => state.toDoItem.toDoItems);

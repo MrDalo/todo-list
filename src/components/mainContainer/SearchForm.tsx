@@ -5,7 +5,9 @@ import { StyledForm, StyledIconButton, StyledInputBase } from './styles/SearchFo
 import { useAppDispatch } from '../../redux/hooks';
 import { toDoItemActions } from '../../redux/slices/toDoItemSlice';
 
-
+/**
+ * @brief Form for searching tasks in the unordered list
+ */
 const SearchForm = () => {
 
     const dispatch = useAppDispatch();

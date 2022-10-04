@@ -6,6 +6,10 @@ import { Box, Typography } from '@mui/material';
 import { addListAsync } from '../../redux/slices/toDoListSlice';
 import { useAppDispatch } from '../../redux/hooks';
 
+
+/**
+ * @brief Form for creating new ToDoLists
+ */
 const NewListForm = () => {
 
   const dispatch = useAppDispatch();

@@ -3,6 +3,7 @@ import { useAppDispatch } from '../../redux/hooks';
 import { toDoListActions } from '../../redux/slices/toDoListSlice';
 import { StyledLink, StyledListItem, StyledListItemButton, StyledListItemText } from './styles/ToDoListItemNavStyles';
 
+
 interface IProps{
   id: string,
   name: string
@@ -10,7 +11,11 @@ interface IProps{
 
 
 
-
+/**
+ * @brief ToDoList component which appears in the unordered list of ToDoLists
+ * @param id ID of the ToDoList
+ * @param name Name of the ToDoList
+ */
 const ToDoListItemNav = ({id, name}: IProps) => {
 
   const dispatch = useAppDispatch();

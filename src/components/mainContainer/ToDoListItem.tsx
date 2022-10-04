@@ -15,7 +15,9 @@ interface IProps extends IToDoItem{
   
 }
 
-
+/**
+ * @brief Task(item) component with layout and operation delete and update
+ */
 const ToDoListItem = ({id, name, description, date, taskListId, checked}: IProps) => {
   
   const dispatch = useAppDispatch();
@@ -84,6 +86,7 @@ const ToDoListItem = ({id, name, description, date, taskListId, checked}: IProps
             marginRight: '10px'
           }}
         />
+
         { !editItemFlag ? 
             <ListItemText>
               <StyledTypography
@@ -156,8 +159,6 @@ const ToDoListItem = ({id, name, description, date, taskListId, checked}: IProps
 
               </StyledForm>
             </ListItemText>
-
-          
           }
 
 

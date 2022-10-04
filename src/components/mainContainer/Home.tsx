@@ -2,6 +2,9 @@ import { Typography } from '@mui/material';
 import React from 'react'
 import {StyledBox} from './styles/HomeStyles'
 
+/**
+ * @brief Home page of main content section of the app
+ */
 const Home = () => {
 
   return (

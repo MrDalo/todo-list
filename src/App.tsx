@@ -5,7 +5,10 @@ import {Routes, Route} from 'react-router-dom';
 import Home from './components/mainContainer/Home';
 import MessageWindow from './components/MessageWindow';
 
-
+/**
+ * @brief Main layout of the app
+ * 
+ */
 function App() {
   return (
     <>

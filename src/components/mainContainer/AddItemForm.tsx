@@ -8,6 +8,10 @@ import { createItemAsync } from '../../redux/slices/toDoItemSlice';
 import {v4 as uuidv4} from 'uuid';
 import { useParams } from 'react-router-dom';
 
+
+/**
+ * @brief From for creating new tasks
+ */
 const AddItemForm = () => {
 
   const dispatch = useAppDispatch();

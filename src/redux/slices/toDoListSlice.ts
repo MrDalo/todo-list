@@ -2,17 +2,27 @@ import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import axios from 'axios';
 import {v4 as uuidv4} from 'uuid';
 
+/**
+ * @brief Interface for Item object
+ */
 interface IToDoList{
     id: string,
     name: string
 }
 
+
+/**
+ * @brief Interface for the redux state toDoList
+ */
 interface IList{
     toDoLists: IToDoList[],
     activeID: string
 }
 
-
+/**
+ * @brief Async get operation of the ToDoList
+ * 
+ */
 export const getListsAsync = createAsyncThunk(
     'lists/getListsAsync',
     async ()=>{
@@ -29,7 +39,10 @@ export const getListsAsync = createAsyncThunk(
     }
 );
 
-
+/**
+ * @brief Async create operation of the ToDoList
+ * 
+ */
 export const addListAsync = createAsyncThunk(
     'lists/addListAsync',
     async (name: string) =>{

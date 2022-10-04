@@ -6,7 +6,9 @@ import { useAppDispatch } from '../../redux/hooks';
 import { toDoItemActions } from '../../redux/slices/toDoItemSlice';
 
 
-
+/**
+ * @brief Filter component which is used for filtering tasks depends on their status(All, Active or Finished)
+ */
 const FilterForm = () => {
 
     const dispatch = useAppDispatch();

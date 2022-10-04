@@ -36,7 +36,7 @@ export const getItemsAsync = createAsyncThunk(
 export const createItemAsync = createAsyncThunk(
     'items/createItemsAsync',
     async (payload: IToDoItem)=>{
-        
+        console.log(payload.date);
         const response = await axios.post(`https://63348dc4849edb52d6f3c6e3.mockapi.io/taskLists/${payload.taskListId}/taskItems`,
         {
             id: uuidv4(),
@@ -95,12 +95,12 @@ export const checkboxItemAsync = createAsyncThunk(
 export const updateItemAsync = createAsyncThunk(
     'items/updateItemsAsync',
     async (payload: {id: string, taskListId: string, name: string, description: string, date: string})=>{
-        
+
         const response = await axios.put(`https://63348dc4849edb52d6f3c6e3.mockapi.io/taskLists/${payload.taskListId}/taskItems/${payload.id}`,
         {
-            id: payload.id,
             name: payload.name,
-            description: payload.description
+            description: payload.description,
+            date: payload.date
 
         })
         .then(res=>{

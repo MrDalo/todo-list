@@ -5,7 +5,9 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { getListsAsync } from '../../redux/slices/toDoListSlice';
 
 
-
+/**
+ * @brief Unordered list of ToDoLists
+ */
 const ToDoListNav = () => {
   const dispatch = useAppDispatch();
   const allToDoLists = useAppSelector((state) => state.toDoList);
