@@ -19,8 +19,8 @@ export const StyledBox = styled(Box)`
         justify-content: center;
         align-items: center;
         text-align: center;
-        // background-color: #ffc266;
-        background-color: #ffd699;
+        color: white;
+        background-color: #1976d2;
     }
     
     &.error{
@@ -29,7 +29,6 @@ export const StyledBox = styled(Box)`
         align-items: center;
         text-align: center;
         background-color: #f6a4a2;
-        // background-color: #f27573;
         
     }
     
@@ -39,7 +38,6 @@ export const StyledBox = styled(Box)`
         align-items: center;
         text-align: center;
         background-color: #b8e0b9;
-        // background-color: #95d097;
     }
 
 `;
