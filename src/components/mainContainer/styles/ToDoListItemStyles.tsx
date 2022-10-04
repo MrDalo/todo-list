@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { ListItem, ListItemIcon, Typography } from "@mui/material";
+import { InputBase, ListItem, ListItemIcon, Typography, Box } from "@mui/material";
 
 
 
@@ -37,4 +37,38 @@ export const StyledListItemIcon = styled(ListItemIcon)`
     column-gap: 5px;
 
 
+`;
+
+
+export const StyledForm = styled('form')`
+display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    row-gap: 5px;
+
+    
+    transition: 1s;
+    z-index: 2;
+    
+`;
+
+
+export const StyledInputBase = styled(InputBase)`
+    background-color: white;
+    border-radius: 15px;
+
+    &.input-error{
+        border: 2px solid #FF5959;        
+    }
+`;
+
+
+export const StyledButtonBox = styled(Box)`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
 `;

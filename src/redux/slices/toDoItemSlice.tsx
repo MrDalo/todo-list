@@ -92,37 +92,30 @@ export const checkboxItemAsync = createAsyncThunk(
     }
 );
 
+export const updateItemAsync = createAsyncThunk(
+    'items/updateItemsAsync',
+    async (payload: {id: string, taskListId: string, name: string, description: string, date: string})=>{
+        
+        const response = await axios.put(`https://63348dc4849edb52d6f3c6e3.mockapi.io/taskLists/${payload.taskListId}/taskItems/${payload.id}`,
+        {
+            id: payload.id,
+            name: payload.name,
+            description: payload.description
+
+        })
+        .then(res=>{
+            return res.data;
+        })
+        .catch(error =>{
+            return error;
+        })
+
+        return await response;
+    }
+);
+
 const initialStateVar: IItem = {toDoItems: [], searchString: "", filterString: "All"};
-// const initialStateTestingData: IItem ={
-//     toDoItems: [
-//         {
-//             id: uuidv4(),
-//             name: "Task 1",
-//             description: "Description 1",
-//             date: new Date().toLocaleString(),
-//             taskListId: uuidv4(),
-//             checked: false
-//         },
-//         {
-//             id: uuidv4(),
-//             name: "Task 2",
-//             description: "Description 2",
-//             date: new Date().toLocaleString(),
-//             taskListId: uuidv4(),
-//             checked: false
-//         },
-//         {
-//             id: uuidv4(),
-//             name: "Task 3",
-//             description: "Description 3",
-//             date: new Date().toLocaleString(),
-//             taskListId: uuidv4(),
-//             checked: true
-//         }
-//     ],
-//     searchString: "",
-//     filterString: "All"
-// };
+
 
 const toDoItemSlice = createSlice({
     name: "toDoItem",
@@ -258,6 +251,32 @@ const toDoItemSlice = createSlice({
             setTimeout(()=>{messageWindow?.classList.remove('success')}, 2000);
             
             state.toDoItems.forEach(item => item.id === action.payload.id ? item.checked = action.payload.checked : item.checked);
+        })
+        .addCase(updateItemAsync.rejected, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.add('error');
+            setTimeout(()=>{messageWindow?.classList.remove('error')}, 2000);
+            messageWindow!.innerHTML = "<p>Error occured!</p>";
+        })
+        .addCase(updateItemAsync.pending, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.add('loading');
+            messageWindow!.innerHTML = "<p>Loading...</p>";
+        })
+        .addCase(updateItemAsync.fulfilled, (state, action) =>{
+            const messageWindow = document.getElementById('message-window');
+            messageWindow?.classList.remove('loading');
+            messageWindow?.classList.add('success');
+            messageWindow!.innerHTML = "<p>Edit successful!</p>";
+            setTimeout(()=>{messageWindow?.classList.remove('success')}, 2000);
+            
+            state.toDoItems.forEach(item => {
+                if(item.id === action.payload.id){
+                    item.name = action.payload.name;
+                    item.description = action.payload.description;
+                    item.date = action.payload.date;
+                }
+            });
         });
 
     }
