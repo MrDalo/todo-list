@@ -3,7 +3,7 @@ import { InputBase, Box } from '@mui/material';
 
 
 export const StyledBox = styled(Box)`
-    margin-top: 10px;
+    margin-top: 5px;
     overflow-y: hidden;
 
 `;
@@ -13,7 +13,7 @@ export const StyledButtonBox = styled(Box)`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 5px;
 `;
 
 export const StyledForm = styled('form')`

@@ -4,7 +4,7 @@ import {Box} from "@mui/material";
 export const StyledBox = styled(Box)`
     width: 95%;
     max-height: 45vh;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     margin-top: 20px;
 
     overflow-y: scroll;
