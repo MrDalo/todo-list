@@ -64,7 +64,6 @@ export const deleteItemAsync = createAsyncThunk(
         
         await axios.delete(`https://63348dc4849edb52d6f3c6e3.mockapi.io/taskLists/${payload.taskListId}/taskItems/${payload.id}`)
         .then(res=>{
-            console.log('Delete successful');
         })
         .catch(error =>{
             return error;
@@ -146,17 +145,14 @@ const toDoItemSlice = createSlice({
 
             switch(action.payload){
                 case "All":{
-                    console.log("All");
                     state.filterString = "All";
                     break;                    
                 }
                 case "Active":{
-                    console.log("Active");
                     state.filterString = "Active";
                     break;
                 }
                 case "Finished":{
-                    console.log("Finished");
                     state.filterString = "Finished"
                     break;
                 }
@@ -165,7 +161,6 @@ const toDoItemSlice = createSlice({
 
         },
         searchItems: (state, action: PayloadAction<string>)=>{
-            console.log(action.payload);
             state.searchString = action.payload;
             
         },
